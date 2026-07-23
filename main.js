@@ -66,9 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Mount charts from JSON files
-    mountChart('#vis1', 'heatmap.json', vegaOptions);
-    mountChart('#vis2', 'barras_standalone.json', vegaOptions);
-    mountChart('#vis3', 'bump_chart.json', vegaOptions);
-    mountChart('#vis4', 'dashboardn.json', dashboardOptions);
+    // Mount charts from JSON files with cache busting parameter
+    const cacheBust = `?v=${Date.now()}`;
+    mountChart('#vis1', `heatmap.json${cacheBust}`, vegaOptions);
+    mountChart('#vis2', `barras_standalone.json${cacheBust}`, vegaOptions);
+    mountChart('#vis3', `bump_chart.json${cacheBust}`, vegaOptions);
+    mountChart('#vis4', `dashboardn.json${cacheBust}`, dashboardOptions);
 });
