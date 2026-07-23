@@ -41,5 +41,5 @@ document.addEventListener('DOMContentLoaded', () => {
     mountChart('#vis1', 'heatmap.json', vegaOptions);
     mountChart('#vis2', 'barras.json', vegaOptions);
     mountChart('#vis3', 'bump_chart.json', vegaOptions);
-    mountChart('#vis4', 'dashboard.json', vegaOptions);
+    mountChart('#vis4', 'dashboardn.json', vegaOptions);
 });
