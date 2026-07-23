@@ -189,7 +189,8 @@
             align-items: center;
             background-color: #FAFAFA;
             border-radius: 8px;
-            overflow: auto;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
             position: relative;
         }
 
@@ -223,13 +224,34 @@
         }
 
         @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px 50px 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .dashboard-container {
+                padding: 0 15px;
+                margin-top: -30px;
+            }
 
             .charts-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .chart-wrapper {
+                padding: 16px;
             }
 
             .chart-wrapper.full-width {
                 grid-column: span 1;
+            }
+            
+            .project-description {
+                padding: 20px !important;
             }
         }
     </style>
