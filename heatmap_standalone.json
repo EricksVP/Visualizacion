@@ -1,1 +1,1467 @@
-{"config": {"view": {}}, "data": {"name": "data-da94ec6d320a21e29a6db5f3ca749a08"}, "mark": {"type": "rect"}, "encoding": {"color": {"condition": {"param": "param_bd511d284fef88df", "empty": true, "aggregate": "mean", "field": "delayed", "legend": {"format": ".0%", "title": "% de vuelos retrasados"}, "scale": {"domain": [0, 0.2, 0.4, 0.6, 1], "domainMid": 0.25, "range": ["#E7E7E7", "#CFCFCF", "#9E9E9E", "#FF0000", "#A80202"]}, "type": "quantitative"}, "value": "lightgray"}, "tooltip": [{"field": "month_name", "title": "Mes", "type": "nominal"}, {"field": "hour", "title": "Hora", "type": "ordinal"}, {"aggregate": "mean", "field": "delayed", "format": ".1%", "title": "% vuelos retrasados", "type": "quantitative"}, {"aggregate": "count", "title": "Cantidad de vuelos", "type": "quantitative"}], "x": {"field": "hour", "title": "Hora del d\u00eda", "type": "ordinal"}, "y": {"field": "month_name", "sort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "title": "Mes", "type": "nominal"}}, "params": [{"name": "param_bd511d284fef88df", "select": {"type": "point", "fields": ["month_name", "hour"]}}, {"name": "param_04d3fcb3a3f68707", "select": {"type": "point", "fields": ["dest"]}, "bind": {"input": "select", "options": [null, "ATL", "ORD", "LAX", "BOS", "MCO", "CLT", "SFO", "FLL", "MIA", "DCA", "DTW", "DFW", "RDU", "TPA", "DEN"], "labels": ["Todos", "ATL", "ORD", "LAX", "BOS", "MCO", "CLT", "SFO", "FLL", "MIA", "DCA", "DTW", "DFW", "RDU", "TPA", "DEN"], "name": "Destino: "}}], "title": "% de vuelos retrasados seg\u00fan mes y hora", "transform": [{"filter": {"param": "param_04d3fcb3a3f68707", "empty": true}}], "$schema": "https://vega.github.io/schema/vega-lite/v6.4.1.json", "datasets": {"data-da94ec6d320a21e29a6db5f3ca749a08": [{"month_name": "Jan", "hour": 5, "delayed": 0.07643312101910828, "count": 157}, {"month_name": "Jan", "hour": 6, "delayed": 0.10033931168201649, "count": 2063}, {"month_name": "Jan", "hour": 7, "delayed": 0.10680686220254565, "count": 1807}, {"month_name": "Jan", "hour": 8, "delayed": 0.13096309630963096, "count": 2222}, {"month_name": "Jan", "hour": 18, "delayed": 0.2533482142857143, "count": 1792}, {"month_name": "Jan", "hour": 9, "delayed": 0.12300123001230012, "count": 1626}, {"month_name": "Jan", "hour": 10, "delayed": 0.11759868421052631, "count": 1216}, {"month_name": "Jan", "hour": 11, "delayed": 0.12925696594427244, "count": 1292}, {"month_name": "Jan", "hour": 12, "delayed": 0.17418899858956277, "count": 1418}, {"month_name": "Jan", "hour": 13, "delayed": 0.21637816245006658, "count": 1502}, {"month_name": "Jan", "hour": 14, "delayed": 0.19414385741565882, "count": 1571}, {"month_name": "Jan", "hour": 15, "delayed": 0.2291231732776618, "count": 1916}, {"month_name": "Jan", "hour": 16, "delayed": 0.23227752639517346, "count": 1989}, {"month_name": "Jan", "hour": 17, "delayed": 0.24467005076142131, "count": 1970}, {"month_name": "Jan", "hour": 19, "delayed": 0.31442663378545005, "count": 1622}, {"month_name": "Jan", "hour": 20, "delayed": 0.3023255813953488, "count": 1247}, {"month_name": "Jan", "hour": 21, "delayed": 0.2581047381546135, "count": 802}, {"month_name": "Jan", "hour": 22, "delayed": 0.29064039408866993, "count": 203}, {"month_name": "Jan", "hour": 23, "delayed": 0.16176470588235295, "count": 68}, {"month_name": "Oct", "hour": 5, "delayed": 0.03529411764705882, "count": 170}, {"month_name": "Oct", "hour": 6, "delayed": 0.050591016548463354, "count": 2115}, {"month_name": "Oct", "hour": 7, "delayed": 0.05701078582434515, "count": 1947}, {"month_name": "Oct", "hour": 8, "delayed": 0.08185328185328185, "count": 2590}, {"month_name": "Oct", "hour": 9, "delayed": 0.06242274412855377, "count": 1618}, {"month_name": "Oct", "hour": 10, "delayed": 0.07841866493843162, "count": 1543}, {"month_name": "Oct", "hour": 11, "delayed": 0.11265544989027067, "count": 1367}, {"month_name": "Oct", "hour": 12, "delayed": 0.1493882807469414, "count": 1553}, {"month_name": "Oct", "hour": 13, "delayed": 0.15466219988833055, "count": 1791}, {"month_name": "Oct", "hour": 14, "delayed": 0.17650186071238702, "count": 1881}, {"month_name": "Oct", "hour": 15, "delayed": 0.20533467539003522, "count": 1987}, {"month_name": "Oct", "hour": 16, "delayed": 0.2164102564102564, "count": 1950}, {"month_name": "Oct", "hour": 17, "delayed": 0.22779729051680883, "count": 1993}, {"month_name": "Oct", "hour": 18, "delayed": 0.23211359912616056, "count": 1831}, {"month_name": "Oct", "hour": 19, "delayed": 0.25071551230681166, "count": 1747}, {"month_name": "Oct", "hour": 20, "delayed": 0.26573889993373095, "count": 1509}, {"month_name": "Oct", "hour": 21, "delayed": 0.24580335731414868, "count": 834}, {"month_name": "Oct", "hour": 22, "delayed": 0.09782608695652174, "count": 184}, {"month_name": "Oct", "hour": 23, "delayed": 0.046511627906976744, "count": 43}, {"month_name": "Nov", "hour": 23, "delayed": 0.05319148936170213, "count": 94}, {"month_name": "Nov", "hour": 22, "delayed": 0.17435897435897435, "count": 195}, {"month_name": "Nov", "hour": 5, "delayed": 0.041666666666666664, "count": 120}, {"month_name": "Nov", "hour": 6, "delayed": 0.04693877551020408, "count": 1960}, {"month_name": "Nov", "hour": 7, "delayed": 0.07127771911298839, "count": 1894}, {"month_name": "Nov", "hour": 8, "delayed": 0.0967741935483871, "count": 2201}, {"month_name": "Nov", "hour": 9, "delayed": 0.09453032104637336, "count": 1682}, {"month_name": "Nov", "hour": 10, "delayed": 0.10235131396957123, "count": 1446}, {"month_name": "Nov", "hour": 11, "delayed": 0.13665086887835703, "count": 1266}, {"month_name": "Nov", "hour": 12, "delayed": 0.12542837559972583, "count": 1459}, {"month_name": "Nov", "hour": 13, "delayed": 0.12507552870090635, "count": 1655}, {"month_name": "Nov", "hour": 14, "delayed": 0.13912075681691707, "count": 1797}, {"month_name": "Nov", "hour": 15, "delayed": 0.16903719912472648, "count": 1828}, {"month_name": "Nov", "hour": 16, "delayed": 0.18781725888324874, "count": 1970}, {"month_name": "Nov", "hour": 17, "delayed": 0.22749861954721148, "count": 1811}, {"month_name": "Nov", "hour": 18, "delayed": 0.2097669256381798, "count": 1802}, {"month_name": "Nov", "hour": 19, "delayed": 0.2548903378778897, "count": 1687}, {"month_name": "Nov", "hour": 20, "delayed": 0.24328593996840442, "count": 1266}, {"month_name": "Nov", "hour": 21, "delayed": 0.28492239467849223, "count": 902}, {"month_name": "Dec", "hour": 23, "delayed": 0.2689075630252101, "count": 119}, {"month_name": "Dec", "hour": 5, "delayed": 0.109375, "count": 192}, {"month_name": "Dec", "hour": 6, "delayed": 0.1134020618556701, "count": 1940}, {"month_name": "Dec", "hour": 7, "delayed": 0.1300771208226221, "count": 1945}, {"month_name": "Dec", "hour": 19, "delayed": 0.4045226130653266, "count": 1592}, {"month_name": "Dec", "hour": 8, "delayed": 0.1761006289308176, "count": 2226}, {"month_name": "Dec", "hour": 9, "delayed": 0.2135693215339233, "count": 1695}, {"month_name": "Dec", "hour": 10, "delayed": 0.19420289855072465, "count": 1380}, {"month_name": "Dec", "hour": 11, "delayed": 0.24754098360655738, "count": 1220}, {"month_name": "Dec", "hour": 12, "delayed": 0.2726671078755791, "count": 1511}, {"month_name": "Dec", "hour": 13, "delayed": 0.2857142857142857, "count": 1631}, {"month_name": "Dec", "hour": 14, "delayed": 0.29867256637168144, "count": 1808}, {"month_name": "Dec", "hour": 15, "delayed": 0.3474099099099099, "count": 1776}, {"month_name": "Dec", "hour": 16, "delayed": 0.38317256162915325, "count": 1866}, {"month_name": "Dec", "hour": 17, "delayed": 0.35965848452508004, "count": 1874}, {"month_name": "Dec", "hour": 18, "delayed": 0.3930666666666667, "count": 1875}, {"month_name": "Dec", "hour": 20, "delayed": 0.44798785117691725, "count": 1317}, {"month_name": "Dec", "hour": 21, "delayed": 0.4388092613009923, "count": 907}, {"month_name": "Dec", "hour": 22, "delayed": 0.4406779661016949, "count": 236}, {"month_name": "Feb", "hour": 5, "delayed": 0.07194244604316546, "count": 139}, {"month_name": "Feb", "hour": 6, "delayed": 0.08511749347258486, "count": 1915}, {"month_name": "Feb", "hour": 7, "delayed": 0.09844559585492228, "count": 1544}, {"month_name": "Feb", "hour": 8, "delayed": 0.1415752741774676, "count": 2006}, {"month_name": "Feb", "hour": 9, "delayed": 0.1369472182596291, "count": 1402}, {"month_name": "Feb", "hour": 10, "delayed": 0.17115551694178974, "count": 1151}, {"month_name": "Feb", "hour": 11, "delayed": 0.14406065711878685, "count": 1187}, {"month_name": "Feb", "hour": 12, "delayed": 0.1848184818481848, "count": 1212}, {"month_name": "Feb", "hour": 13, "delayed": 0.23240469208211142, "count": 1364}, {"month_name": "Feb", "hour": 14, "delayed": 0.26386913229018494, "count": 1406}, {"month_name": "Feb", "hour": 15, "delayed": 0.26880466472303205, "count": 1715}, {"month_name": "Feb", "hour": 16, "delayed": 0.25923852183650614, "count": 1786}, {"month_name": "Feb", "hour": 17, "delayed": 0.2549476135040745, "count": 1718}, {"month_name": "Feb", "hour": 18, "delayed": 0.2614162806088683, "count": 1511}, {"month_name": "Feb", "hour": 19, "delayed": 0.3163265306122449, "count": 1470}, {"month_name": "Feb", "hour": 20, "delayed": 0.29213483146067415, "count": 1157}, {"month_name": "Feb", "hour": 21, "delayed": 0.32938076416337286, "count": 759}, {"month_name": "Feb", "hour": 22, "delayed": 0.3333333333333333, "count": 177}, {"month_name": "Feb", "hour": 23, "delayed": 0.15492957746478872, "count": 71}, {"month_name": "Mar", "hour": 21, "delayed": 0.40885684860968075, "count": 971}, {"month_name": "Mar", "hour": 23, "delayed": 0.2717391304347826, "count": 92}, {"month_name": "Mar", "hour": 22, "delayed": 0.35390946502057613, "count": 243}, {"month_name": "Mar", "hour": 5, "delayed": 0.05660377358490566, "count": 159}, {"month_name": "Mar", "hour": 6, "delayed": 0.08675588371019843, "count": 2167}, {"month_name": "Mar", "hour": 7, "delayed": 0.09036472509526401, "count": 1837}, {"month_name": "Mar", "hour": 8, "delayed": 0.12188491164476666, "count": 2207}, {"month_name": "Mar", "hour": 9, "delayed": 0.14277652370203162, "count": 1772}, {"month_name": "Mar", "hour": 10, "delayed": 0.1809672386895476, "count": 1282}, {"month_name": "Mar", "hour": 11, "delayed": 0.19383921863260706, "count": 1331}, {"month_name": "Mar", "hour": 12, "delayed": 0.19919246298788695, "count": 1486}, {"month_name": "Mar", "hour": 13, "delayed": 0.22419252691576946, "count": 1579}, {"month_name": "Mar", "hour": 14, "delayed": 0.2551561579257513, "count": 1697}, {"month_name": "Mar", "hour": 15, "delayed": 0.27912867274569403, "count": 1974}, {"month_name": "Mar", "hour": 16, "delayed": 0.2925557136083452, "count": 2109}, {"month_name": "Mar", "hour": 17, "delayed": 0.3224043715846995, "count": 2013}, {"month_name": "Mar", "hour": 18, "delayed": 0.2760806916426513, "count": 1735}, {"month_name": "Mar", "hour": 19, "delayed": 0.3430232558139535, "count": 1892}, {"month_name": "Mar", "hour": 20, "delayed": 0.3538892782060266, "count": 1427}, {"month_name": "Apr", "hour": 5, "delayed": 0.06666666666666667, "count": 165}, {"month_name": "Apr", "hour": 6, "delayed": 0.06811862835959222, "count": 2158}, {"month_name": "Apr", "hour": 7, "delayed": 0.07728459530026109, "count": 1915}, {"month_name": "Apr", "hour": 8, "delayed": 0.12005717008099095, "count": 2099}, {"month_name": "Apr", "hour": 9, "delayed": 0.13318895506226314, "count": 1847}, {"month_name": "Apr", "hour": 10, "delayed": 0.13828125, "count": 1280}, {"month_name": "Apr", "hour": 11, "delayed": 0.19072948328267478, "count": 1316}, {"month_name": "Apr", "hour": 12, "delayed": 0.1926286509040334, "count": 1438}, {"month_name": "Apr", "hour": 13, "delayed": 0.2407079646017699, "count": 1695}, {"month_name": "Apr", "hour": 14, "delayed": 0.26225769669327254, "count": 1754}, {"month_name": "Apr", "hour": 15, "delayed": 0.2731027361899845, "count": 1937}, {"month_name": "Apr", "hour": 16, "delayed": 0.2928611579539067, "count": 1779}, {"month_name": "Apr", "hour": 17, "delayed": 0.33714569865738436, "count": 2011}, {"month_name": "Apr", "hour": 18, "delayed": 0.3282608695652174, "count": 1840}, {"month_name": "Apr", "hour": 19, "delayed": 0.3681081081081081, "count": 1850}, {"month_name": "Apr", "hour": 20, "delayed": 0.39565217391304347, "count": 1380}, {"month_name": "Apr", "hour": 21, "delayed": 0.4187568157033806, "count": 917}, {"month_name": "Apr", "hour": 22, "delayed": 0.33505154639175255, "count": 194}, {"month_name": "Apr", "hour": 23, "delayed": 0.22988505747126436, "count": 87}, {"month_name": "May", "hour": 16, "delayed": 0.34525837592277114, "count": 1761}, {"month_name": "May", "hour": 5, "delayed": 0.02158273381294964, "count": 139}, {"month_name": "May", "hour": 6, "delayed": 0.06558810668998688, "count": 2287}, {"month_name": "May", "hour": 7, "delayed": 0.06844919786096257, "count": 1870}, {"month_name": "May", "hour": 8, "delayed": 0.099124020285846, "count": 2169}, {"month_name": "May", "hour": 9, "delayed": 0.10976282404853833, "count": 1813}, {"month_name": "May", "hour": 10, "delayed": 0.12978142076502733, "count": 1464}, {"month_name": "May", "hour": 11, "delayed": 0.17045454545454544, "count": 1320}, {"month_name": "May", "hour": 12, "delayed": 0.18241903502974224, "count": 1513}, {"month_name": "May", "hour": 13, "delayed": 0.23033067274800456, "count": 1754}, {"month_name": "May", "hour": 14, "delayed": 0.25191256830601094, "count": 1830}, {"month_name": "May", "hour": 15, "delayed": 0.3341733870967742, "count": 1984}, {"month_name": "May", "hour": 17, "delayed": 0.3423076923076923, "count": 2080}, {"month_name": "May", "hour": 18, "delayed": 0.36363636363636365, "count": 1870}, {"month_name": "May", "hour": 19, "delayed": 0.40842105263157896, "count": 1900}, {"month_name": "May", "hour": 20, "delayed": 0.41901931649331353, "count": 1346}, {"month_name": "May", "hour": 21, "delayed": 0.3813559322033898, "count": 826}, {"month_name": "May", "hour": 22, "delayed": 0.29439252336448596, "count": 214}, {"month_name": "May", "hour": 23, "delayed": 0.13978494623655913, "count": 93}, {"month_name": "Jun", "hour": 23, "delayed": 0.3877551020408163, "count": 98}, {"month_name": "Jun", "hour": 5, "delayed": 0.0872093023255814, "count": 172}, {"month_name": "Jun", "hour": 6, "delayed": 0.09018567639257294, "count": 2262}, {"month_name": "Jun", "hour": 7, "delayed": 0.09138932910723718, "count": 1893}, {"month_name": "Jun", "hour": 8, "delayed": 0.12648597242035187, "count": 2103}, {"month_name": "Jun", "hour": 9, "delayed": 0.12879708383961117, "count": 1646}, {"month_name": "Jun", "hour": 10, "delayed": 0.18155410312273057, "count": 1377}, {"month_name": "Jun", "hour": 11, "delayed": 0.19832826747720364, "count": 1316}, {"month_name": "Jun", "hour": 12, "delayed": 0.24163319946452477, "count": 1494}, {"month_name": "Jun", "hour": 13, "delayed": 0.3034134007585335, "count": 1582}, {"month_name": "Jun", "hour": 14, "delayed": 0.29414980863860035, "count": 1829}, {"month_name": "Jun", "hour": 15, "delayed": 0.39328657314629256, "count": 1996}, {"month_name": "Jun", "hour": 16, "delayed": 0.41074737492279184, "count": 1619}, {"month_name": "Jun", "hour": 17, "delayed": 0.43315508021390375, "count": 2057}, {"month_name": "Jun", "hour": 18, "delayed": 0.4834590829947766, "count": 1723}, {"month_name": "Jun", "hour": 19, "delayed": 0.4967817437097718, "count": 1709}, {"month_name": "Jun", "hour": 20, "delayed": 0.5057121096725057, "count": 1313}, {"month_name": "Jun", "hour": 21, "delayed": 0.5299877600979193, "count": 817}, {"month_name": "Jun", "hour": 22, "delayed": 0.4298245614035088, "count": 228}, {"month_name": "Jul", "hour": 20, "delayed": 0.5393419170243204, "count": 1398}, {"month_name": "Jul", "hour": 23, "delayed": 0.5901639344262295, "count": 122}, {"month_name": "Jul", "hour": 22, "delayed": 0.5877551020408164, "count": 245}, {"month_name": "Jul", "hour": 21, "delayed": 0.5508130081300813, "count": 984}, {"month_name": "Jul", "hour": 5, "delayed": 0.1065989847715736, "count": 197}, {"month_name": "Jul", "hour": 6, "delayed": 0.1062992125984252, "count": 2286}, {"month_name": "Jul", "hour": 7, "delayed": 0.10005104645227157, "count": 1959}, {"month_name": "Jul", "hour": 8, "delayed": 0.13849557522123893, "count": 2260}, {"month_name": "Jul", "hour": 9, "delayed": 0.16487455197132617, "count": 1674}, {"month_name": "Jul", "hour": 10, "delayed": 0.18232428670842032, "count": 1437}, {"month_name": "Jul", "hour": 11, "delayed": 0.17530163236337828, "count": 1409}, {"month_name": "Jul", "hour": 12, "delayed": 0.22298136645962732, "count": 1610}, {"month_name": "Jul", "hour": 13, "delayed": 0.2835913312693498, "count": 1615}, {"month_name": "Jul", "hour": 14, "delayed": 0.3044397463002114, "count": 1892}, {"month_name": "Jul", "hour": 15, "delayed": 0.3774580335731415, "count": 2085}, {"month_name": "Jul", "hour": 16, "delayed": 0.4209315698677401, "count": 1739}, {"month_name": "Jul", "hour": 17, "delayed": 0.4443400657585721, "count": 2129}, {"month_name": "Jul", "hour": 18, "delayed": 0.4696261682242991, "count": 1712}, {"month_name": "Jul", "hour": 19, "delayed": 0.5236720554272517, "count": 1732}, {"month_name": "Aug", "hour": 21, "delayed": 0.3731203007518797, "count": 1064}, {"month_name": "Aug", "hour": 23, "delayed": 0.3629032258064516, "count": 124}, {"month_name": "Aug", "hour": 20, "delayed": 0.3909348441926346, "count": 1412}, {"month_name": "Aug", "hour": 22, "delayed": 0.30434782608695654, "count": 230}, {"month_name": "Aug", "hour": 5, "delayed": 0.01764705882352941, "count": 170}, {"month_name": "Aug", "hour": 6, "delayed": 0.07361702127659575, "count": 2350}, {"month_name": "Aug", "hour": 7, "delayed": 0.0825147347740668, "count": 2036}, {"month_name": "Aug", "hour": 8, "delayed": 0.10180696342000882, "count": 2269}, {"month_name": "Aug", "hour": 9, "delayed": 0.11190903650508677, "count": 1671}, {"month_name": "Aug", "hour": 10, "delayed": 0.1564625850340136, "count": 1470}, {"month_name": "Aug", "hour": 11, "delayed": 0.15659140568099053, "count": 1373}, {"month_name": "Aug", "hour": 12, "delayed": 0.18664169787765295, "count": 1602}, {"month_name": "Aug", "hour": 13, "delayed": 0.25383200490496627, "count": 1631}, {"month_name": "Aug", "hour": 14, "delayed": 0.2878464818763326, "count": 1876}, {"month_name": "Aug", "hour": 15, "delayed": 0.29751671442215855, "count": 2094}, {"month_name": "Aug", "hour": 16, "delayed": 0.3121841661987647, "count": 1781}, {"month_name": "Aug", "hour": 17, "delayed": 0.31508739650413986, "count": 2174}, {"month_name": "Aug", "hour": 18, "delayed": 0.3301136363636364, "count": 1760}, {"month_name": "Aug", "hour": 19, "delayed": 0.35518814139110605, "count": 1754}, {"month_name": "Sep", "hour": 23, "delayed": 0.13513513513513514, "count": 37}, {"month_name": "Sep", "hour": 22, "delayed": 0.16981132075471697, "count": 212}, {"month_name": "Sep", "hour": 5, "delayed": 0.042682926829268296, "count": 164}, {"month_name": "Sep", "hour": 6, "delayed": 0.05190311418685121, "count": 2023}, {"month_name": "Sep", "hour": 7, "delayed": 0.05994694960212202, "count": 1885}, {"month_name": "Sep", "hour": 8, "delayed": 0.07883986928104575, "count": 2448}, {"month_name": "Sep", "hour": 9, "delayed": 0.07277452891487979, "count": 1539}, {"month_name": "Sep", "hour": 10, "delayed": 0.10495626822157435, "count": 1372}, {"month_name": "Sep", "hour": 11, "delayed": 0.09776119402985074, "count": 1340}, {"month_name": "Sep", "hour": 12, "delayed": 0.11155644622578491, "count": 1497}, {"month_name": "Sep", "hour": 13, "delayed": 0.1417824074074074, "count": 1728}, {"month_name": "Sep", "hour": 14, "delayed": 0.14396887159533073, "count": 1799}, {"month_name": "Sep", "hour": 15, "delayed": 0.20093457943925233, "count": 1926}, {"month_name": "Sep", "hour": 16, "delayed": 0.19966905681191396, "count": 1813}, {"month_name": "Sep", "hour": 17, "delayed": 0.21177685950413222, "count": 1936}, {"month_name": "Sep", "hour": 18, "delayed": 0.2116060961313013, "count": 1706}, {"month_name": "Sep", "hour": 19, "delayed": 0.2153846153846154, "count": 1625}, {"month_name": "Sep", "hour": 20, "delayed": 0.24267468069120962, "count": 1331}, {"month_name": "Sep", "hour": 21, "delayed": 0.26720647773279355, "count": 741}]}, "width": "container", "height": 300}
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "% de vuelos retrasados seg\u00fan mes y hora",
+  "width": "container",
+  "height": 350,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "padding": {
+    "top": 10,
+    "left": 45,
+    "right": 20,
+    "bottom": 40
+  },
+  "data": {
+    "values": [
+      {
+        "month_name": "Jan",
+        "hour": 5,
+        "delayed": 0.0764,
+        "count": 157
+      },
+      {
+        "month_name": "Jan",
+        "hour": 6,
+        "delayed": 0.1003,
+        "count": 2063
+      },
+      {
+        "month_name": "Jan",
+        "hour": 7,
+        "delayed": 0.1068,
+        "count": 1807
+      },
+      {
+        "month_name": "Jan",
+        "hour": 8,
+        "delayed": 0.131,
+        "count": 2222
+      },
+      {
+        "month_name": "Jan",
+        "hour": 18,
+        "delayed": 0.2533,
+        "count": 1792
+      },
+      {
+        "month_name": "Jan",
+        "hour": 9,
+        "delayed": 0.123,
+        "count": 1626
+      },
+      {
+        "month_name": "Jan",
+        "hour": 10,
+        "delayed": 0.1176,
+        "count": 1216
+      },
+      {
+        "month_name": "Jan",
+        "hour": 11,
+        "delayed": 0.1293,
+        "count": 1292
+      },
+      {
+        "month_name": "Jan",
+        "hour": 12,
+        "delayed": 0.1742,
+        "count": 1418
+      },
+      {
+        "month_name": "Jan",
+        "hour": 13,
+        "delayed": 0.2164,
+        "count": 1502
+      },
+      {
+        "month_name": "Jan",
+        "hour": 14,
+        "delayed": 0.1941,
+        "count": 1571
+      },
+      {
+        "month_name": "Jan",
+        "hour": 15,
+        "delayed": 0.2291,
+        "count": 1916
+      },
+      {
+        "month_name": "Jan",
+        "hour": 16,
+        "delayed": 0.2323,
+        "count": 1989
+      },
+      {
+        "month_name": "Jan",
+        "hour": 17,
+        "delayed": 0.2447,
+        "count": 1970
+      },
+      {
+        "month_name": "Jan",
+        "hour": 19,
+        "delayed": 0.3144,
+        "count": 1622
+      },
+      {
+        "month_name": "Jan",
+        "hour": 20,
+        "delayed": 0.3023,
+        "count": 1247
+      },
+      {
+        "month_name": "Jan",
+        "hour": 21,
+        "delayed": 0.2581,
+        "count": 802
+      },
+      {
+        "month_name": "Jan",
+        "hour": 22,
+        "delayed": 0.2906,
+        "count": 203
+      },
+      {
+        "month_name": "Jan",
+        "hour": 23,
+        "delayed": 0.1618,
+        "count": 68
+      },
+      {
+        "month_name": "Oct",
+        "hour": 5,
+        "delayed": 0.0353,
+        "count": 170
+      },
+      {
+        "month_name": "Oct",
+        "hour": 6,
+        "delayed": 0.0506,
+        "count": 2115
+      },
+      {
+        "month_name": "Oct",
+        "hour": 7,
+        "delayed": 0.057,
+        "count": 1947
+      },
+      {
+        "month_name": "Oct",
+        "hour": 8,
+        "delayed": 0.0819,
+        "count": 2590
+      },
+      {
+        "month_name": "Oct",
+        "hour": 9,
+        "delayed": 0.0624,
+        "count": 1618
+      },
+      {
+        "month_name": "Oct",
+        "hour": 10,
+        "delayed": 0.0784,
+        "count": 1543
+      },
+      {
+        "month_name": "Oct",
+        "hour": 11,
+        "delayed": 0.1127,
+        "count": 1367
+      },
+      {
+        "month_name": "Oct",
+        "hour": 12,
+        "delayed": 0.1494,
+        "count": 1553
+      },
+      {
+        "month_name": "Oct",
+        "hour": 13,
+        "delayed": 0.1547,
+        "count": 1791
+      },
+      {
+        "month_name": "Oct",
+        "hour": 14,
+        "delayed": 0.1765,
+        "count": 1881
+      },
+      {
+        "month_name": "Oct",
+        "hour": 15,
+        "delayed": 0.2053,
+        "count": 1987
+      },
+      {
+        "month_name": "Oct",
+        "hour": 16,
+        "delayed": 0.2164,
+        "count": 1950
+      },
+      {
+        "month_name": "Oct",
+        "hour": 17,
+        "delayed": 0.2278,
+        "count": 1993
+      },
+      {
+        "month_name": "Oct",
+        "hour": 18,
+        "delayed": 0.2321,
+        "count": 1831
+      },
+      {
+        "month_name": "Oct",
+        "hour": 19,
+        "delayed": 0.2507,
+        "count": 1747
+      },
+      {
+        "month_name": "Oct",
+        "hour": 20,
+        "delayed": 0.2657,
+        "count": 1509
+      },
+      {
+        "month_name": "Oct",
+        "hour": 21,
+        "delayed": 0.2458,
+        "count": 834
+      },
+      {
+        "month_name": "Oct",
+        "hour": 22,
+        "delayed": 0.0978,
+        "count": 184
+      },
+      {
+        "month_name": "Oct",
+        "hour": 23,
+        "delayed": 0.0465,
+        "count": 43
+      },
+      {
+        "month_name": "Nov",
+        "hour": 23,
+        "delayed": 0.0532,
+        "count": 94
+      },
+      {
+        "month_name": "Nov",
+        "hour": 22,
+        "delayed": 0.1744,
+        "count": 195
+      },
+      {
+        "month_name": "Nov",
+        "hour": 5,
+        "delayed": 0.0417,
+        "count": 120
+      },
+      {
+        "month_name": "Nov",
+        "hour": 6,
+        "delayed": 0.0469,
+        "count": 1960
+      },
+      {
+        "month_name": "Nov",
+        "hour": 7,
+        "delayed": 0.0713,
+        "count": 1894
+      },
+      {
+        "month_name": "Nov",
+        "hour": 8,
+        "delayed": 0.0968,
+        "count": 2201
+      },
+      {
+        "month_name": "Nov",
+        "hour": 9,
+        "delayed": 0.0945,
+        "count": 1682
+      },
+      {
+        "month_name": "Nov",
+        "hour": 10,
+        "delayed": 0.1024,
+        "count": 1446
+      },
+      {
+        "month_name": "Nov",
+        "hour": 11,
+        "delayed": 0.1367,
+        "count": 1266
+      },
+      {
+        "month_name": "Nov",
+        "hour": 12,
+        "delayed": 0.1254,
+        "count": 1459
+      },
+      {
+        "month_name": "Nov",
+        "hour": 13,
+        "delayed": 0.1251,
+        "count": 1655
+      },
+      {
+        "month_name": "Nov",
+        "hour": 14,
+        "delayed": 0.1391,
+        "count": 1797
+      },
+      {
+        "month_name": "Nov",
+        "hour": 15,
+        "delayed": 0.169,
+        "count": 1828
+      },
+      {
+        "month_name": "Nov",
+        "hour": 16,
+        "delayed": 0.1878,
+        "count": 1970
+      },
+      {
+        "month_name": "Nov",
+        "hour": 17,
+        "delayed": 0.2275,
+        "count": 1811
+      },
+      {
+        "month_name": "Nov",
+        "hour": 18,
+        "delayed": 0.2098,
+        "count": 1802
+      },
+      {
+        "month_name": "Nov",
+        "hour": 19,
+        "delayed": 0.2549,
+        "count": 1687
+      },
+      {
+        "month_name": "Nov",
+        "hour": 20,
+        "delayed": 0.2433,
+        "count": 1266
+      },
+      {
+        "month_name": "Nov",
+        "hour": 21,
+        "delayed": 0.2849,
+        "count": 902
+      },
+      {
+        "month_name": "Dec",
+        "hour": 23,
+        "delayed": 0.2689,
+        "count": 119
+      },
+      {
+        "month_name": "Dec",
+        "hour": 5,
+        "delayed": 0.1094,
+        "count": 192
+      },
+      {
+        "month_name": "Dec",
+        "hour": 6,
+        "delayed": 0.1134,
+        "count": 1940
+      },
+      {
+        "month_name": "Dec",
+        "hour": 7,
+        "delayed": 0.1301,
+        "count": 1945
+      },
+      {
+        "month_name": "Dec",
+        "hour": 19,
+        "delayed": 0.4045,
+        "count": 1592
+      },
+      {
+        "month_name": "Dec",
+        "hour": 8,
+        "delayed": 0.1761,
+        "count": 2226
+      },
+      {
+        "month_name": "Dec",
+        "hour": 9,
+        "delayed": 0.2136,
+        "count": 1695
+      },
+      {
+        "month_name": "Dec",
+        "hour": 10,
+        "delayed": 0.1942,
+        "count": 1380
+      },
+      {
+        "month_name": "Dec",
+        "hour": 11,
+        "delayed": 0.2475,
+        "count": 1220
+      },
+      {
+        "month_name": "Dec",
+        "hour": 12,
+        "delayed": 0.2727,
+        "count": 1511
+      },
+      {
+        "month_name": "Dec",
+        "hour": 13,
+        "delayed": 0.2857,
+        "count": 1631
+      },
+      {
+        "month_name": "Dec",
+        "hour": 14,
+        "delayed": 0.2987,
+        "count": 1808
+      },
+      {
+        "month_name": "Dec",
+        "hour": 15,
+        "delayed": 0.3474,
+        "count": 1776
+      },
+      {
+        "month_name": "Dec",
+        "hour": 16,
+        "delayed": 0.3832,
+        "count": 1866
+      },
+      {
+        "month_name": "Dec",
+        "hour": 17,
+        "delayed": 0.3597,
+        "count": 1874
+      },
+      {
+        "month_name": "Dec",
+        "hour": 18,
+        "delayed": 0.3931,
+        "count": 1875
+      },
+      {
+        "month_name": "Dec",
+        "hour": 20,
+        "delayed": 0.448,
+        "count": 1317
+      },
+      {
+        "month_name": "Dec",
+        "hour": 21,
+        "delayed": 0.4388,
+        "count": 907
+      },
+      {
+        "month_name": "Dec",
+        "hour": 22,
+        "delayed": 0.4407,
+        "count": 236
+      },
+      {
+        "month_name": "Feb",
+        "hour": 5,
+        "delayed": 0.0719,
+        "count": 139
+      },
+      {
+        "month_name": "Feb",
+        "hour": 6,
+        "delayed": 0.0851,
+        "count": 1915
+      },
+      {
+        "month_name": "Feb",
+        "hour": 7,
+        "delayed": 0.0984,
+        "count": 1544
+      },
+      {
+        "month_name": "Feb",
+        "hour": 8,
+        "delayed": 0.1416,
+        "count": 2006
+      },
+      {
+        "month_name": "Feb",
+        "hour": 9,
+        "delayed": 0.1369,
+        "count": 1402
+      },
+      {
+        "month_name": "Feb",
+        "hour": 10,
+        "delayed": 0.1712,
+        "count": 1151
+      },
+      {
+        "month_name": "Feb",
+        "hour": 11,
+        "delayed": 0.1441,
+        "count": 1187
+      },
+      {
+        "month_name": "Feb",
+        "hour": 12,
+        "delayed": 0.1848,
+        "count": 1212
+      },
+      {
+        "month_name": "Feb",
+        "hour": 13,
+        "delayed": 0.2324,
+        "count": 1364
+      },
+      {
+        "month_name": "Feb",
+        "hour": 14,
+        "delayed": 0.2639,
+        "count": 1406
+      },
+      {
+        "month_name": "Feb",
+        "hour": 15,
+        "delayed": 0.2688,
+        "count": 1715
+      },
+      {
+        "month_name": "Feb",
+        "hour": 16,
+        "delayed": 0.2592,
+        "count": 1786
+      },
+      {
+        "month_name": "Feb",
+        "hour": 17,
+        "delayed": 0.2549,
+        "count": 1718
+      },
+      {
+        "month_name": "Feb",
+        "hour": 18,
+        "delayed": 0.2614,
+        "count": 1511
+      },
+      {
+        "month_name": "Feb",
+        "hour": 19,
+        "delayed": 0.3163,
+        "count": 1470
+      },
+      {
+        "month_name": "Feb",
+        "hour": 20,
+        "delayed": 0.2921,
+        "count": 1157
+      },
+      {
+        "month_name": "Feb",
+        "hour": 21,
+        "delayed": 0.3294,
+        "count": 759
+      },
+      {
+        "month_name": "Feb",
+        "hour": 22,
+        "delayed": 0.3333,
+        "count": 177
+      },
+      {
+        "month_name": "Feb",
+        "hour": 23,
+        "delayed": 0.1549,
+        "count": 71
+      },
+      {
+        "month_name": "Mar",
+        "hour": 21,
+        "delayed": 0.4089,
+        "count": 971
+      },
+      {
+        "month_name": "Mar",
+        "hour": 23,
+        "delayed": 0.2717,
+        "count": 92
+      },
+      {
+        "month_name": "Mar",
+        "hour": 22,
+        "delayed": 0.3539,
+        "count": 243
+      },
+      {
+        "month_name": "Mar",
+        "hour": 5,
+        "delayed": 0.0566,
+        "count": 159
+      },
+      {
+        "month_name": "Mar",
+        "hour": 6,
+        "delayed": 0.0868,
+        "count": 2167
+      },
+      {
+        "month_name": "Mar",
+        "hour": 7,
+        "delayed": 0.0904,
+        "count": 1837
+      },
+      {
+        "month_name": "Mar",
+        "hour": 8,
+        "delayed": 0.1219,
+        "count": 2207
+      },
+      {
+        "month_name": "Mar",
+        "hour": 9,
+        "delayed": 0.1428,
+        "count": 1772
+      },
+      {
+        "month_name": "Mar",
+        "hour": 10,
+        "delayed": 0.181,
+        "count": 1282
+      },
+      {
+        "month_name": "Mar",
+        "hour": 11,
+        "delayed": 0.1938,
+        "count": 1331
+      },
+      {
+        "month_name": "Mar",
+        "hour": 12,
+        "delayed": 0.1992,
+        "count": 1486
+      },
+      {
+        "month_name": "Mar",
+        "hour": 13,
+        "delayed": 0.2242,
+        "count": 1579
+      },
+      {
+        "month_name": "Mar",
+        "hour": 14,
+        "delayed": 0.2552,
+        "count": 1697
+      },
+      {
+        "month_name": "Mar",
+        "hour": 15,
+        "delayed": 0.2791,
+        "count": 1974
+      },
+      {
+        "month_name": "Mar",
+        "hour": 16,
+        "delayed": 0.2926,
+        "count": 2109
+      },
+      {
+        "month_name": "Mar",
+        "hour": 17,
+        "delayed": 0.3224,
+        "count": 2013
+      },
+      {
+        "month_name": "Mar",
+        "hour": 18,
+        "delayed": 0.2761,
+        "count": 1735
+      },
+      {
+        "month_name": "Mar",
+        "hour": 19,
+        "delayed": 0.343,
+        "count": 1892
+      },
+      {
+        "month_name": "Mar",
+        "hour": 20,
+        "delayed": 0.3539,
+        "count": 1427
+      },
+      {
+        "month_name": "Apr",
+        "hour": 5,
+        "delayed": 0.0667,
+        "count": 165
+      },
+      {
+        "month_name": "Apr",
+        "hour": 6,
+        "delayed": 0.0681,
+        "count": 2158
+      },
+      {
+        "month_name": "Apr",
+        "hour": 7,
+        "delayed": 0.0773,
+        "count": 1915
+      },
+      {
+        "month_name": "Apr",
+        "hour": 8,
+        "delayed": 0.1201,
+        "count": 2099
+      },
+      {
+        "month_name": "Apr",
+        "hour": 9,
+        "delayed": 0.1332,
+        "count": 1847
+      },
+      {
+        "month_name": "Apr",
+        "hour": 10,
+        "delayed": 0.1383,
+        "count": 1280
+      },
+      {
+        "month_name": "Apr",
+        "hour": 11,
+        "delayed": 0.1907,
+        "count": 1316
+      },
+      {
+        "month_name": "Apr",
+        "hour": 12,
+        "delayed": 0.1926,
+        "count": 1438
+      },
+      {
+        "month_name": "Apr",
+        "hour": 13,
+        "delayed": 0.2407,
+        "count": 1695
+      },
+      {
+        "month_name": "Apr",
+        "hour": 14,
+        "delayed": 0.2623,
+        "count": 1754
+      },
+      {
+        "month_name": "Apr",
+        "hour": 15,
+        "delayed": 0.2731,
+        "count": 1937
+      },
+      {
+        "month_name": "Apr",
+        "hour": 16,
+        "delayed": 0.2929,
+        "count": 1779
+      },
+      {
+        "month_name": "Apr",
+        "hour": 17,
+        "delayed": 0.3371,
+        "count": 2011
+      },
+      {
+        "month_name": "Apr",
+        "hour": 18,
+        "delayed": 0.3283,
+        "count": 1840
+      },
+      {
+        "month_name": "Apr",
+        "hour": 19,
+        "delayed": 0.3681,
+        "count": 1850
+      },
+      {
+        "month_name": "Apr",
+        "hour": 20,
+        "delayed": 0.3957,
+        "count": 1380
+      },
+      {
+        "month_name": "Apr",
+        "hour": 21,
+        "delayed": 0.4188,
+        "count": 917
+      },
+      {
+        "month_name": "Apr",
+        "hour": 22,
+        "delayed": 0.3351,
+        "count": 194
+      },
+      {
+        "month_name": "Apr",
+        "hour": 23,
+        "delayed": 0.2299,
+        "count": 87
+      },
+      {
+        "month_name": "May",
+        "hour": 16,
+        "delayed": 0.3453,
+        "count": 1761
+      },
+      {
+        "month_name": "May",
+        "hour": 5,
+        "delayed": 0.0216,
+        "count": 139
+      },
+      {
+        "month_name": "May",
+        "hour": 6,
+        "delayed": 0.0656,
+        "count": 2287
+      },
+      {
+        "month_name": "May",
+        "hour": 7,
+        "delayed": 0.0684,
+        "count": 1870
+      },
+      {
+        "month_name": "May",
+        "hour": 8,
+        "delayed": 0.0991,
+        "count": 2169
+      },
+      {
+        "month_name": "May",
+        "hour": 9,
+        "delayed": 0.1098,
+        "count": 1813
+      },
+      {
+        "month_name": "May",
+        "hour": 10,
+        "delayed": 0.1298,
+        "count": 1464
+      },
+      {
+        "month_name": "May",
+        "hour": 11,
+        "delayed": 0.1705,
+        "count": 1320
+      },
+      {
+        "month_name": "May",
+        "hour": 12,
+        "delayed": 0.1824,
+        "count": 1513
+      },
+      {
+        "month_name": "May",
+        "hour": 13,
+        "delayed": 0.2303,
+        "count": 1754
+      },
+      {
+        "month_name": "May",
+        "hour": 14,
+        "delayed": 0.2519,
+        "count": 1830
+      },
+      {
+        "month_name": "May",
+        "hour": 15,
+        "delayed": 0.3342,
+        "count": 1984
+      },
+      {
+        "month_name": "May",
+        "hour": 17,
+        "delayed": 0.3423,
+        "count": 2080
+      },
+      {
+        "month_name": "May",
+        "hour": 18,
+        "delayed": 0.3636,
+        "count": 1870
+      },
+      {
+        "month_name": "May",
+        "hour": 19,
+        "delayed": 0.4084,
+        "count": 1900
+      },
+      {
+        "month_name": "May",
+        "hour": 20,
+        "delayed": 0.419,
+        "count": 1346
+      },
+      {
+        "month_name": "May",
+        "hour": 21,
+        "delayed": 0.3814,
+        "count": 826
+      },
+      {
+        "month_name": "May",
+        "hour": 22,
+        "delayed": 0.2944,
+        "count": 214
+      },
+      {
+        "month_name": "May",
+        "hour": 23,
+        "delayed": 0.1398,
+        "count": 93
+      },
+      {
+        "month_name": "Jun",
+        "hour": 23,
+        "delayed": 0.3878,
+        "count": 98
+      },
+      {
+        "month_name": "Jun",
+        "hour": 5,
+        "delayed": 0.0872,
+        "count": 172
+      },
+      {
+        "month_name": "Jun",
+        "hour": 6,
+        "delayed": 0.0902,
+        "count": 2262
+      },
+      {
+        "month_name": "Jun",
+        "hour": 7,
+        "delayed": 0.0914,
+        "count": 1893
+      },
+      {
+        "month_name": "Jun",
+        "hour": 8,
+        "delayed": 0.1265,
+        "count": 2103
+      },
+      {
+        "month_name": "Jun",
+        "hour": 9,
+        "delayed": 0.1288,
+        "count": 1646
+      },
+      {
+        "month_name": "Jun",
+        "hour": 10,
+        "delayed": 0.1816,
+        "count": 1377
+      },
+      {
+        "month_name": "Jun",
+        "hour": 11,
+        "delayed": 0.1983,
+        "count": 1316
+      },
+      {
+        "month_name": "Jun",
+        "hour": 12,
+        "delayed": 0.2416,
+        "count": 1494
+      },
+      {
+        "month_name": "Jun",
+        "hour": 13,
+        "delayed": 0.3034,
+        "count": 1582
+      },
+      {
+        "month_name": "Jun",
+        "hour": 14,
+        "delayed": 0.2941,
+        "count": 1829
+      },
+      {
+        "month_name": "Jun",
+        "hour": 15,
+        "delayed": 0.3933,
+        "count": 1996
+      },
+      {
+        "month_name": "Jun",
+        "hour": 16,
+        "delayed": 0.4107,
+        "count": 1619
+      },
+      {
+        "month_name": "Jun",
+        "hour": 17,
+        "delayed": 0.4332,
+        "count": 2057
+      },
+      {
+        "month_name": "Jun",
+        "hour": 18,
+        "delayed": 0.4835,
+        "count": 1723
+      },
+      {
+        "month_name": "Jun",
+        "hour": 19,
+        "delayed": 0.4968,
+        "count": 1709
+      },
+      {
+        "month_name": "Jun",
+        "hour": 20,
+        "delayed": 0.5057,
+        "count": 1313
+      },
+      {
+        "month_name": "Jun",
+        "hour": 21,
+        "delayed": 0.53,
+        "count": 817
+      },
+      {
+        "month_name": "Jun",
+        "hour": 22,
+        "delayed": 0.4298,
+        "count": 228
+      },
+      {
+        "month_name": "Jul",
+        "hour": 20,
+        "delayed": 0.5393,
+        "count": 1398
+      },
+      {
+        "month_name": "Jul",
+        "hour": 23,
+        "delayed": 0.5902,
+        "count": 122
+      },
+      {
+        "month_name": "Jul",
+        "hour": 22,
+        "delayed": 0.5878,
+        "count": 245
+      },
+      {
+        "month_name": "Jul",
+        "hour": 21,
+        "delayed": 0.5508,
+        "count": 984
+      },
+      {
+        "month_name": "Jul",
+        "hour": 5,
+        "delayed": 0.1066,
+        "count": 197
+      },
+      {
+        "month_name": "Jul",
+        "hour": 6,
+        "delayed": 0.1063,
+        "count": 2286
+      },
+      {
+        "month_name": "Jul",
+        "hour": 7,
+        "delayed": 0.1001,
+        "count": 1959
+      },
+      {
+        "month_name": "Jul",
+        "hour": 8,
+        "delayed": 0.1385,
+        "count": 2260
+      },
+      {
+        "month_name": "Jul",
+        "hour": 9,
+        "delayed": 0.1649,
+        "count": 1674
+      },
+      {
+        "month_name": "Jul",
+        "hour": 10,
+        "delayed": 0.1823,
+        "count": 1437
+      },
+      {
+        "month_name": "Jul",
+        "hour": 11,
+        "delayed": 0.1753,
+        "count": 1409
+      },
+      {
+        "month_name": "Jul",
+        "hour": 12,
+        "delayed": 0.223,
+        "count": 1610
+      },
+      {
+        "month_name": "Jul",
+        "hour": 13,
+        "delayed": 0.2836,
+        "count": 1615
+      },
+      {
+        "month_name": "Jul",
+        "hour": 14,
+        "delayed": 0.3044,
+        "count": 1892
+      },
+      {
+        "month_name": "Jul",
+        "hour": 15,
+        "delayed": 0.3775,
+        "count": 2085
+      },
+      {
+        "month_name": "Jul",
+        "hour": 16,
+        "delayed": 0.4209,
+        "count": 1739
+      },
+      {
+        "month_name": "Jul",
+        "hour": 17,
+        "delayed": 0.4443,
+        "count": 2129
+      },
+      {
+        "month_name": "Jul",
+        "hour": 18,
+        "delayed": 0.4696,
+        "count": 1712
+      },
+      {
+        "month_name": "Jul",
+        "hour": 19,
+        "delayed": 0.5237,
+        "count": 1732
+      },
+      {
+        "month_name": "Aug",
+        "hour": 21,
+        "delayed": 0.3731,
+        "count": 1064
+      },
+      {
+        "month_name": "Aug",
+        "hour": 23,
+        "delayed": 0.3629,
+        "count": 124
+      },
+      {
+        "month_name": "Aug",
+        "hour": 20,
+        "delayed": 0.3909,
+        "count": 1412
+      },
+      {
+        "month_name": "Aug",
+        "hour": 22,
+        "delayed": 0.3043,
+        "count": 230
+      },
+      {
+        "month_name": "Aug",
+        "hour": 5,
+        "delayed": 0.0176,
+        "count": 170
+      },
+      {
+        "month_name": "Aug",
+        "hour": 6,
+        "delayed": 0.0736,
+        "count": 2350
+      },
+      {
+        "month_name": "Aug",
+        "hour": 7,
+        "delayed": 0.0825,
+        "count": 2036
+      },
+      {
+        "month_name": "Aug",
+        "hour": 8,
+        "delayed": 0.1018,
+        "count": 2269
+      },
+      {
+        "month_name": "Aug",
+        "hour": 9,
+        "delayed": 0.1119,
+        "count": 1671
+      },
+      {
+        "month_name": "Aug",
+        "hour": 10,
+        "delayed": 0.1565,
+        "count": 1470
+      },
+      {
+        "month_name": "Aug",
+        "hour": 11,
+        "delayed": 0.1566,
+        "count": 1373
+      },
+      {
+        "month_name": "Aug",
+        "hour": 12,
+        "delayed": 0.1866,
+        "count": 1602
+      },
+      {
+        "month_name": "Aug",
+        "hour": 13,
+        "delayed": 0.2538,
+        "count": 1631
+      },
+      {
+        "month_name": "Aug",
+        "hour": 14,
+        "delayed": 0.2878,
+        "count": 1876
+      },
+      {
+        "month_name": "Aug",
+        "hour": 15,
+        "delayed": 0.2975,
+        "count": 2094
+      },
+      {
+        "month_name": "Aug",
+        "hour": 16,
+        "delayed": 0.3122,
+        "count": 1781
+      },
+      {
+        "month_name": "Aug",
+        "hour": 17,
+        "delayed": 0.3151,
+        "count": 2174
+      },
+      {
+        "month_name": "Aug",
+        "hour": 18,
+        "delayed": 0.3301,
+        "count": 1760
+      },
+      {
+        "month_name": "Aug",
+        "hour": 19,
+        "delayed": 0.3552,
+        "count": 1754
+      },
+      {
+        "month_name": "Sep",
+        "hour": 23,
+        "delayed": 0.1351,
+        "count": 37
+      },
+      {
+        "month_name": "Sep",
+        "hour": 22,
+        "delayed": 0.1698,
+        "count": 212
+      },
+      {
+        "month_name": "Sep",
+        "hour": 5,
+        "delayed": 0.0427,
+        "count": 164
+      },
+      {
+        "month_name": "Sep",
+        "hour": 6,
+        "delayed": 0.0519,
+        "count": 2023
+      },
+      {
+        "month_name": "Sep",
+        "hour": 7,
+        "delayed": 0.0599,
+        "count": 1885
+      },
+      {
+        "month_name": "Sep",
+        "hour": 8,
+        "delayed": 0.0788,
+        "count": 2448
+      },
+      {
+        "month_name": "Sep",
+        "hour": 9,
+        "delayed": 0.0728,
+        "count": 1539
+      },
+      {
+        "month_name": "Sep",
+        "hour": 10,
+        "delayed": 0.105,
+        "count": 1372
+      },
+      {
+        "month_name": "Sep",
+        "hour": 11,
+        "delayed": 0.0978,
+        "count": 1340
+      },
+      {
+        "month_name": "Sep",
+        "hour": 12,
+        "delayed": 0.1116,
+        "count": 1497
+      },
+      {
+        "month_name": "Sep",
+        "hour": 13,
+        "delayed": 0.1418,
+        "count": 1728
+      },
+      {
+        "month_name": "Sep",
+        "hour": 14,
+        "delayed": 0.144,
+        "count": 1799
+      },
+      {
+        "month_name": "Sep",
+        "hour": 15,
+        "delayed": 0.2009,
+        "count": 1926
+      },
+      {
+        "month_name": "Sep",
+        "hour": 16,
+        "delayed": 0.1997,
+        "count": 1813
+      },
+      {
+        "month_name": "Sep",
+        "hour": 17,
+        "delayed": 0.2118,
+        "count": 1936
+      },
+      {
+        "month_name": "Sep",
+        "hour": 18,
+        "delayed": 0.2116,
+        "count": 1706
+      },
+      {
+        "month_name": "Sep",
+        "hour": 19,
+        "delayed": 0.2154,
+        "count": 1625
+      },
+      {
+        "month_name": "Sep",
+        "hour": 20,
+        "delayed": 0.2427,
+        "count": 1331
+      },
+      {
+        "month_name": "Sep",
+        "hour": 21,
+        "delayed": 0.2672,
+        "count": 741
+      }
+    ]
+  },
+  "mark": {
+    "type": "rect"
+  },
+  "encoding": {
+    "x": {
+      "field": "hour",
+      "type": "ordinal",
+      "title": "Hora del d\u00eda"
+    },
+    "y": {
+      "field": "month_name",
+      "type": "nominal",
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "title": "Mes"
+    },
+    "color": {
+      "field": "delayed",
+      "type": "quantitative",
+      "title": "% de vuelos retrasados",
+      "scale": {
+        "domain": [
+          0,
+          0.2,
+          0.4,
+          0.6,
+          1.0
+        ],
+        "domainMid": 0.25,
+        "range": [
+          "#E7E7E7",
+          "#CFCFCF",
+          "#9E9E9E",
+          "#FF0000",
+          "#A80202"
+        ]
+      },
+      "legend": {
+        "format": ".0%",
+        "title": "% de vuelos retrasados"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "month_name",
+        "type": "nominal",
+        "title": "Mes"
+      },
+      {
+        "field": "hour",
+        "type": "ordinal",
+        "title": "Hora"
+      },
+      {
+        "field": "delayed",
+        "type": "quantitative",
+        "format": ".1%",
+        "title": "% vuelos retrasados"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Cantidad de vuelos"
+      }
+    ]
+  }
+}
