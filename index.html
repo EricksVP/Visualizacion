@@ -160,14 +160,15 @@
                         Análisis Visual de <span class="text-secondary">Datos</span>
                     </h2>
                     <p class="font-body-lg text-on-surface-variant max-w-lg">
-                        Explora nuestras visualizaciones interactivas de aviación con precisión de ingeniería y
-                        telemetría en tiempo real.
+                        Exploración visual de 336,776 vuelos de Nueva York en 2013. Transformamos el icónico dataset
+                        nycflights13 en visualizaciones claras para revelar cómo el clima y la logística impactan la
+                        eficiencia operativa del tráfico aéreo.
                     </p>
                     <div class="flex flex-wrap gap-4 pt-4">
                         <button
                             class="bg-secondary text-on-secondary px-8 py-3 rounded-lg font-headline-md text-body-md cyan-glow hover:brightness-110 transition-all active:scale-95"
                             onclick="document.getElementById('charts-section').scrollIntoView({behavior: 'smooth'})">
-                            Launch Console
+                            Console
                         </button>
                         <button
                             class="border border-secondary/50 text-secondary bg-white/5 backdrop-blur-sm px-8 py-3 rounded-lg font-headline-md text-body-md hover:bg-secondary/10 transition-all">
@@ -197,8 +198,6 @@
             <div class="max-w-max-width mx-auto">
                 <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div>
-                        <h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em] mb-2">
-                            Operational Metrics</h3>
                         <h4 class="font-headline-md text-headline-md text-on-surface">Data Visualization Cluster</h4>
                     </div>
                     <div class="flex gap-2">
@@ -219,7 +218,7 @@
                         class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col">
                         <div class="status-line"></div>
                         <div class="flex justify-between items-start mb-6 w-full">
-                            <span class="font-label-caps text-label-caps text-secondary uppercase">Heatmap Alpha</span>
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Heatmap</span>
                             <span class="material-symbols-outlined text-on-surface-variant text-sm">sensors</span>
                         </div>
                         <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
@@ -228,9 +227,13 @@
                                 visualization...</span>
                         </div>
                         <div class="mt-6">
-                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Concentración de vuelos</h5>
-                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Distribución de tráfico
-                                según horario operacional.</p>
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Concentración y Horarios
+                                Críticos de Vuelos</h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Mapa de calor operacional
+                                que visualiza la densidad de salidas y llegadas distribuidas por hora del día. Permite
+                                identificar de inmediato las franjas horarias con mayor congestión en los tres
+                                principales aeropuertos de Nueva York (JFK, LGA, EWR), facilitando el análisis de horas
+                                pico y cuellos de botella logísticos.</p>
                         </div>
                     </div>
 
@@ -239,7 +242,7 @@
                         class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col">
                         <div class="status-line"></div>
                         <div class="flex justify-between items-start mb-6 w-full">
-                            <span class="font-label-caps text-label-caps text-secondary uppercase">Metrics Delta</span>
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Bar Chart</span>
                             <span class="material-symbols-outlined text-on-surface-variant text-sm">bar_chart</span>
                         </div>
                         <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
@@ -247,9 +250,13 @@
                             <span class="text-gray-400 font-mono-data animate-pulse">Processing metadata...</span>
                         </div>
                         <div class="mt-6">
-                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Porcentajes de Retraso</h5>
-                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Comparativa técnica de
-                                performance por transportista.</p>
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Porcentaje de Retrasos por
+                                Aerolínea</h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Gráfico comparativo que
+                                analiza la puntualidad y el rendimiento operativo de las diferentes aerolíneas. Facilita
+                                la evaluación directa de la proporción de vuelos demorados frente a los vuelos a tiempo,
+                                destacando los transportistas con mayor eficiencia y aquellos con mayor índice de
+                                impuntualidad.</p>
                         </div>
                     </div>
 
@@ -258,7 +265,7 @@
                         class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col md:col-span-2">
                         <div class="status-line"></div>
                         <div class="flex justify-between items-start mb-6 w-full">
-                            <span class="font-label-caps text-label-caps text-secondary uppercase">Evo-Flow Gamma</span>
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Bump Chart</span>
                             <span class="material-symbols-outlined text-on-surface-variant text-sm">timeline</span>
                         </div>
                         <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
@@ -267,10 +274,13 @@
                                 data...</span>
                         </div>
                         <div class="mt-6">
-                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Evolución de Clasificaciones
-                            </h5>
-                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Seguimiento dinámico de
-                                rankings en el período.</p>
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Evolución del Ranking de
+                                Puntualidad y Volumen</h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Visualización de tipo
+                                Bump Chart que realiza un seguimiento dinámico de las posiciones y rankings de las
+                                aerolíneas a lo largo de los meses. Permite analizar patrones estacionales,
+                                fluctuaciones en la calidad del servicio y cambios competitivos entre aerolíneas durante
+                                todo el período del dataset nycflights13.</p>
                         </div>
                     </div>
                 </div>
@@ -286,10 +296,11 @@
             </div>
             <div class="max-w-max-width mx-auto">
                 <div class="text-center mb-12">
-                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Dashboard Final</h2>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Dashboard</h2>
                     <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
-                        Interface de control unificada con filtrado bidireccional y telemetría persistente. Interactúa
-                        con los elementos para aislar variables específicas.
+                        Panel de control integrado e interactivo que combina múltiples vistas analíticas sobre los
+                        336,776 vuelos registrados en Nueva York durante 2013. Utiliza los controles dinámicos para
+                        filtrar de forma bidireccional por aeropuerto de origen, destino y la aerolínea.
                     </p>
                 </div>
                 <div
@@ -322,6 +333,7 @@
     </main>
 
     <!-- Footer -->
+
 
 
     <!-- App Logic -->
