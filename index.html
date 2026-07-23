@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Visual con Vega-Lite</title>
+
+    <!-- Importar fuentes modernas de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Librerías de Vega (versiones más recientes para máxima compatibilidad) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed"></script>
+
+    <!-- Cargar los datos de los gráficos directamente para evitar bloqueos CORS locales -->
+    <script src="heatmap.js"></script>
+    <script src="barras.js"></script>
+    <script src="bump_chart.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #F3F4F6;
+            --card-bg: #FFFFFF;
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
+            --accent-color: #3B82F6;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        /* ----- Sección Introductoria (Landing Page) ----- */
+        .hero {
+            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
+            color: white;
+            padding: 60px 20px 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .intro-cards {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .intro-card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: #F8FAFC;
+        }
+
+        .intro-card p {
+            font-size: 0.95rem;
+            color: #E2E8F0;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        /* ----- Sección del Dashboard ----- */
+        .dashboard-container {
+            max-width: 1400px;
+            margin: -40px auto 40px auto;
+            /* Superposición sutil con el hero */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .controls {
+            background: var(--card-bg);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .controls label {
+            font-weight: 600;
+            margin-right: 12px;
+            color: var(--text-main);
+        }
+
+        .controls select {
+            padding: 10px 16px;
+            border-radius: 8px;
+            border: 1px solid #D1D5DB;
+            font-size: 1rem;
+            font-family: inherit;
+            background-color: white;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .controls select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+        /* ----- Disposición de los Gráficos (Grid) ----- */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .chart-wrapper {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chart-wrapper:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .chart-wrapper.full-width {
+            grid-column: span 2;
+            /* Completa la fila inferior ocupando todo el ancho */
+        }
+
+        .chart-title {
+            margin-top: 0;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            border-bottom: 1px solid #E5E7EB;
+            padding-bottom: 12px;
+            width: 100%;
+        }
+
+        /* Ajuste para la vista */
+        .vis-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FAFAFA;
+            border-radius: 8px;
+            overflow: auto;
+            position: relative;
+        }
+
+        .vis-container .vega-embed {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Centrar gráfico 3 y Dashboard */
+        #vis3, #vis4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        #vis3 .vega-embed {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            transform: scale(0.85);
+            transform-origin: center top;
+            margin-bottom: -10%; /* Compensar el espacio vacío que deja el scale */
+        }
+
+        #vis4 .vega-embed {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Introducción tipo Landing Page -->
+    <header class="hero">
+        <h1>Análisis Visual de Datos</h1>
+        <p class="subtitle">Explora nuestras visualizaciones interactivas. Descubre tendencias, distribuciones y
+            análisis detallados a través de nuestro panel de control.</p>
+
+        <div class="intro-cards">
+            <div class="intro-card">
+                <h3>1. Gráfico Superior Izquierdo</h3>
+                <p>Visualización enfocada en comparar métricas primarias. Proporción 3:2.</p>
+            </div>
+            <div class="intro-card">
+                <h3>2. Gráfico Superior Derecho</h3>
+                <p>Análisis de distribución que complementa el gráfico principal en la misma proporción.</p>
+            </div>
+            <div class="intro-card">
+                <h3>3. Gráfico Inferior</h3>
+                <p>Tercer gráfico que se sitúa debajo de los dos primeros, completando su disposición.</p>
+            </div>
+            <div class="intro-card">
+                <h3>4. Dashboard Final</h3>
+                <p>El panel integrador situado al final. Utiliza el filtro desplegable para interactuar con esta vista.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <main class="dashboard-container">
+
+        <!-- Cuadrícula de 3 Gráficos (Dos arriba, uno abajo completando) -->
+        <div class="charts-grid" style="margin-bottom: 40px;">
+
+            <!-- Gráfico 1 (Arriba Izquierda) -->
+            <div class="chart-wrapper">
+                <h2 class="chart-title">Visualización 1</h2>
+                <div id="vis1" class="vis-container"></div>
+                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
+                    Este mapa de calor muestra la concentración de vuelos según su horario, facilitando la identificación visual de las franjas con mayor o menor actividad.
+                </p>
+            </div>
+
+            <!-- Gráfico 2 (Arriba Derecha) -->
+            <div class="chart-wrapper">
+                <h2 class="chart-title">Visualización 2</h2>
+                <div id="vis2" class="vis-container"></div>
+                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
+                    El gráfico de barras compara de manera directa los porcentajes de retraso entre diferentes categorías, permitiendo identificar rápidamente los extremos del rendimiento.
+                </p>
+            </div>
+
+            <!-- Gráfico 3 (Abajo, completando) -->
+            <div class="chart-wrapper full-width">
+                <h2 class="chart-title">Visualización 3</h2>
+                <div id="vis3" class="vis-container"></div>
+                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
+                    Este Bump Chart permite hacer un seguimiento de la evolución de las clasificaciones a lo largo de un período, resaltando qué elementos mejoran o empeoran su posición.
+                </p>
+            </div>
+
+            <!-- Dashboard Final (Dentro del grid para mantener mismo tamaño) -->
+            <div class="chart-wrapper full-width" style="align-items: center; text-align: center;">
+                <h2 class="chart-title" style="width: 100%; border-bottom: none;">Dashboard Final</h2>
+                <div id="vis4" class="vis-container"></div>
+                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem; max-width: 800px; text-align: center;">
+                    Este Dashboard integrador proporciona una vista general combinando múltiples métricas. Interactúa con los elementos del gráfico para explorar los datos a mayor profundidad.
+                </p>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        // Configuración para Vega-Lite
+        const vegaOptions = {
+            actions: true
+        };
+
+        // 1. Cargar Gráfico Superior Izquierdo (usando la variable en heatmap.js)
+        vegaEmbed('#vis1', heatmap_spec, vegaOptions).catch(console.error);
+
+        // 2. Cargar Gráfico Superior Derecho (usando la variable en barras.js)
+        vegaEmbed('#vis2', barras_spec, vegaOptions).catch(console.error);
+
+        // 3. Cargar Gráfico 3 (Abajo, completando) (usando la variable en bump_chart.js)
+        vegaEmbed('#vis3', bump_chart_spec, vegaOptions).catch(console.error);
+
+        // 4. Cargar Dashboard Final (Separado) y guardar su vista para el filtro
+        let dashboardView;
+
+        // Usando el archivo JSON directamente para el dashboard
+        vegaEmbed('#vis4', 'dashboard.json', vegaOptions).then(result => {
+            dashboardView = result.view;
+        }).catch(console.error);
+
+
+        // 5. Lógica del Select (Únicamente afecta al dashboard final)
+
+        const selectElement = document.getElementById('select-final');
+
+        selectElement.addEventListener('change', function (event) {
+            const selectedValue = event.target.value;
+            console.log("Aplicando filtro al dashboard final:", selectedValue);
+
+            if (dashboardView) {
+                // EJEMPLO: Si tu JSON de vega-lite tiene un "param" o "signal" llamado 'filtro_categoria'
+                // puedes actualizarlo de la siguiente manera:
+
+                /*
+                dashboardView.signal('filtro_categoria', selectedValue === 'all' ? null : selectedValue)
+                             .runAsync();
+                */
+
+                // Nota: Asegúrate de configurar el "signal" / "param" dentro de tu 'dashboard_final.json'
+                // para que reaccione a este cambio.
+            }
+        });
+    </script>
+
+</body>
+
+</html>
