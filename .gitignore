@@ -1,6 +1,5 @@
 # Ignore old >100MB uncompressed raw data JSON files
 barras.json
-heatmap.json
 bump_chart_standalone.json
 
 .DS_Store

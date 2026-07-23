@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Mount charts from JSON files
-    mountChart('#vis1', 'heatmap_standalone.json', vegaOptions);
+    mountChart('#vis1', 'heatmap.json', vegaOptions);
     mountChart('#vis2', 'barras_standalone.json', vegaOptions);
     mountChart('#vis3', 'bump_chart.json', vegaOptions);
     mountChart('#vis4', 'dashboardn.json', dashboardOptions);
