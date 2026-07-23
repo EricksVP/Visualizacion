@@ -3,14 +3,43 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configuration for Vega-Lite charts tailored for a clean white background
     const vegaOptions = {
         actions: true,
+        width: "container",
         config: {
             background: "transparent", // Container is white, so transparent is fine
             view: { stroke: "transparent" },
+            autosize: { type: "fit", contains: "padding" },
             axis: {
                 domainColor: "#475569", // slate-600
                 gridColor: "rgba(0, 0, 0, 0.05)",
                 labelColor: "#334155", // slate-700
                 titleColor: "#0f172a", // slate-900 (dark)
+                titleFontWeight: 600
+            },
+            legend: {
+                labelColor: "#334155",
+                titleColor: "#0f172a",
+                titleFontWeight: 600
+            },
+            title: {
+                color: "#0f172a",
+                fontWeight: 700
+            }
+        }
+    };
+
+    // Dedicated options for the multi-view Dashboard (#vis4)
+    // Concatenated specs (vconcat/hconcat) must not use width: "container" or autosize: "fit"
+    const dashboardOptions = {
+        actions: true,
+        config: {
+            background: "transparent",
+            view: { stroke: "transparent" },
+            autosize: { type: "pad", contains: "padding" },
+            axis: {
+                domainColor: "#475569",
+                gridColor: "rgba(0, 0, 0, 0.05)",
+                labelColor: "#334155",
+                titleColor: "#0f172a",
                 titleFontWeight: 600
             },
             legend: {
@@ -38,8 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Mount charts from JSON files
-    mountChart('#vis1', 'heatmap.json', vegaOptions);
-    mountChart('#vis2', 'barras.json', vegaOptions);
+    mountChart('#vis1', 'heatmap_standalone.json', vegaOptions);
+    mountChart('#vis2', 'barras_standalone.json', vegaOptions);
     mountChart('#vis3', 'bump_chart.json', vegaOptions);
-    mountChart('#vis4', 'dashboardn.json', vegaOptions);
+    mountChart('#vis4', 'dashboardn.json', dashboardOptions);
 });
