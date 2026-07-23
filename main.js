@@ -37,11 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Mount charts if specs are available
-    if (typeof heatmap_spec !== 'undefined') mountChart('#vis1', heatmap_spec, vegaOptions);
-    if (typeof barras_spec !== 'undefined') mountChart('#vis2', barras_spec, vegaOptions);
-    if (typeof bump_chart_spec !== 'undefined') mountChart('#vis3', bump_chart_spec, vegaOptions);
-    
-    // Dashboard loads from JSON
+    // Mount charts from JSON files
+    mountChart('#vis1', 'heatmap.json', vegaOptions);
+    mountChart('#vis2', 'barras.json', vegaOptions);
+    mountChart('#vis3', 'bump_chart.json', vegaOptions);
     mountChart('#vis4', 'dashboard.json', vegaOptions);
 });

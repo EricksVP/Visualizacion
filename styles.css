@@ -45,11 +45,17 @@ body {
     align-items: center !important;
     justify-content: center !important;
     width: 100% !important;
+    margin: 0 auto !important;
 }
 
-.vega-embed canvas, .vega-embed svg {
+.vega-embed canvas, .vega-embed svg, .vega-embed .vega-visualization {
     margin: 0 auto !important;
     display: block !important;
+}
+
+.vega-embed summary {
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .vega-bindings {
