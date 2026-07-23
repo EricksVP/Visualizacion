@@ -1,371 +1,360 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="dark" lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Visual con Vega-Lite</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title> Data Dashboard</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&amp;display=swap" rel="stylesheet" />
 
-    <!-- Importar fuentes modernas de Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Styles extracted -->
+    <link rel="stylesheet" href="styles.css" />
 
-    <!-- Librerías de Vega (versiones más recientes para máxima compatibilidad) -->
+    <!-- Vega-Lite Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vega"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
 
-    <!-- Cargar los datos de los gráficos directamente para evitar bloqueos CORS locales -->
+    <!-- Data JS Scripts -->
     <script src="heatmap.js"></script>
     <script src="barras.js"></script>
     <script src="bump_chart.js"></script>
 
-    <style>
-        :root {
-            --bg-color: #F3F4F6;
-            --card-bg: #FFFFFF;
-            --text-main: #1F2937;
-            --text-muted: #6B7280;
-            --accent-color: #3B82F6;
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#0f172a",
+                        "inverse-surface": "#d4e4fa",
+                        "surface-container-highest": "#273647",
+                        "secondary-fixed": "#c4e7ff",
+                        "surface-variant": "#273647",
+                        "surface-container": "#122131",
+                        "on-primary-fixed": "#131b2e",
+                        "tertiary-container": "#2d0e00",
+                        "surface-tint": "#bec6e0",
+                        "on-primary": "#283044",
+                        "outline": "#909097",
+                        "on-tertiary-fixed": "#341100",
+                        "on-secondary-container": "#00374d",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "error": "#ffb4ab",
+                        "outline-variant": "#45464d",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "on-tertiary-fixed-variant": "#783200",
+                        "surface": "#051424",
+                        "tertiary-fixed": "#ffdbca",
+                        "background": "#051424",
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-dim": "#051424",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-bright": "#2c3a4c",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-tertiary": "#552100",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#7bd0ff",
+                        "inverse-primary": "#565e74",
+                        "secondary": "#7bd0ff",
+                        "surface-container-high": "#1c2b3c",
+                        "on-secondary-fixed": "#001e2c",
+                        "on-tertiary-container": "#d45d00",
+                        "on-secondary": "#00354a",
+                        "primary-fixed": "#dae2fd",
+                        "on-background": "#d4e4fa",
+                        "primary": "#bec6e0",
+                        "surface-container-low": "#0d1c2d",
+                        "tertiary": "#ffb690",
+                        "on-secondary-fixed-variant": "#004c69",
+                        "on-primary-container": "#798098",
+                        "inverse-on-surface": "#233143",
+                        "secondary-container": "#00a6e0",
+                        "on-surface": "#d4e4fa",
+                        "surface-container-lowest": "#010f1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "max-width": "1440px",
+                        "margin-desktop": "64px",
+                        "grid-unit": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Outfit"],
+                        "mono-data": ["monospace"],
+                        "display-lg": ["Outfit"],
+                        "headline-md": ["Outfit"],
+                        "headline-lg-mobile": ["Outfit"],
+                        "body-lg": ["Outfit"],
+                        "body-md": ["Outfit"],
+                        "label-caps": ["Outfit"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                },
+            },
         }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Outfit', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-        }
-
-        /* ----- Sección Introductoria (Landing Page) ----- */
-        .hero {
-            background: linear-gradient(135deg, #1E3A8A 0%, #3B82F6 100%);
-            color: white;
-            padding: 60px 20px 80px 20px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-weight: 800;
-        }
-
-        .hero p.subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-        }
-
-        .intro-cards {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .intro-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 24px;
-            flex: 1;
-            min-width: 280px;
-            text-align: left;
-            transition: transform 0.3s ease;
-        }
-
-        .intro-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .intro-card h3 {
-            margin-top: 0;
-            font-size: 1.25rem;
-            color: #F8FAFC;
-        }
-
-        .intro-card p {
-            font-size: 0.95rem;
-            color: #E2E8F0;
-            line-height: 1.5;
-            margin-bottom: 0;
-        }
-
-        /* ----- Sección del Dashboard ----- */
-        .dashboard-container {
-            max-width: 1400px;
-            margin: -40px auto 40px auto;
-            /* Superposición sutil con el hero */
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .controls {
-            background: var(--card-bg);
-            padding: 16px 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .controls label {
-            font-weight: 600;
-            margin-right: 12px;
-            color: var(--text-main);
-        }
-
-        .controls select {
-            padding: 10px 16px;
-            border-radius: 8px;
-            border: 1px solid #D1D5DB;
-            font-size: 1rem;
-            font-family: inherit;
-            background-color: white;
-            cursor: pointer;
-            outline: none;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        .controls select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
-        }
-
-        /* ----- Disposición de los Gráficos (Grid) ----- */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        .chart-wrapper {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .chart-wrapper:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-        }
-
-        .chart-wrapper.full-width {
-            grid-column: span 2;
-            /* Completa la fila inferior ocupando todo el ancho */
-        }
-
-        .chart-title {
-            margin-top: 0;
-            margin-bottom: 16px;
-            font-size: 1.1rem;
-            color: var(--text-main);
-            border-bottom: 1px solid #E5E7EB;
-            padding-bottom: 12px;
-            width: 100%;
-        }
-
-        /* Ajuste para la vista */
-        .vis-container {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #FAFAFA;
-            border-radius: 8px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            position: relative;
-        }
-
-        .vis-container .vega-embed {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        /* Centrar gráfico 3 y Dashboard */
-        #vis3, #vis4 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        #vis3 .vega-embed {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            transform: scale(0.85);
-            transform-origin: center top;
-            margin-bottom: -10%; /* Compensar el espacio vacío que deja el scale */
-        }
-
-        #vis4 .vega-embed {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 15px 50px 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .dashboard-container {
-                padding: 0 15px;
-                margin-top: -30px;
-            }
-
-            .charts-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-
-            .chart-wrapper {
-                padding: 16px;
-            }
-
-            .chart-wrapper.full-width {
-                grid-column: span 1;
-            }
-            
-            .project-description {
-                padding: 20px !important;
-            }
-        }
-    </style>
+    </script>
 </head>
 
-<body>
+<body class="font-body-md selection:bg-secondary selection:text-on-secondary">
+    <!-- Micro-Grid Overlay -->
+    <div class="fixed inset-0 technical-grid pointer-events-none z-0"></div>
 
-    <!-- Introducción tipo Landing Page -->
-    <header class="hero">
-        <h1>Análisis Visual de Datos</h1>
-        <p class="subtitle">Explora nuestras visualizaciones interactivas. Descubre tendencias, distribuciones y
-            análisis detallados a través de nuestro panel de control.</p>
-
-        <div class="project-description" style="max-width: 800px; margin: 0 auto; padding: 30px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); text-align: center;">
-            <h3 style="color: #F8FAFC; margin-top: 0; font-size: 1.4rem;">Sobre el Proyecto</h3>
-            <p style="color: #E2E8F0; line-height: 1.6; margin-bottom: 0; font-size: 1.05rem;">
-                [Aquí puedes agregar la descripción, objetivos y detalles relevantes de tu proyecto. Modifica este texto más adelante para explicar de qué trata el análisis.]
-            </p>
+    <!-- Navigation -->
+    <header
+        class="fixed top-0 w-full z-50 bg-white/3 dark:bg-white/3 backdrop-blur-md border-b border-white/10 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+        <div class="flex items-center gap-2">
+        </div>
+        <nav class="hidden md:flex items-center gap-8 mx-auto">
+            <a class="text-on-surface-variant hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest"
+                href="#about">Acerca del proyecto</a>
+            <a class="text-on-surface-variant hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest"
+                href="#charts-section">Gráficos</a>
+            <a class="text-on-surface-variant hover:text-secondary transition-colors duration-300 font-label-caps text-label-caps uppercase tracking-widest"
+                href="#dashboard-final">Dashboard</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <!-- Removed right side logo -->
         </div>
     </header>
 
-    <!-- Contenedor Principal -->
-    <main class="dashboard-container">
-
-        <!-- Cuadrícula de 3 Gráficos (Dos arriba, uno abajo completando) -->
-        <div class="charts-grid" style="margin-bottom: 40px;">
-
-            <!-- Gráfico 1 (Arriba Izquierda) -->
-            <div class="chart-wrapper">
-                <h2 class="chart-title">Heat Map</h2>
-                <div id="vis1" class="vis-container"></div>
-                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
-                    Este mapa de calor muestra la concentración de vuelos según su horario, facilitando la identificación visual de las franjas con mayor o menor actividad.
-                </p>
+    <main class="relative z-10">
+        <!-- Hero Section -->
+        <section id="about" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden">
+            <!-- Shader Background extracted to shader.js -->
+            <div class="absolute inset-0 w-full h-full opacity-60" style="display:block;">
+                <canvas id="shader-canvas-ANIMATION_1" style="display:block;width:100%;height:100%"></canvas>
+                <script src="shader.js"></script>
             </div>
 
-            <!-- Gráfico 2 (Arriba Derecha) -->
-            <div class="chart-wrapper">
-                <h2 class="chart-title">Bar Chart</h2>
-                <div id="vis2" class="vis-container"></div>
-                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
-                    El gráfico de barras compara de manera directa los porcentajes de retraso entre diferentes categorías, permitiendo identificar rápidamente los extremos del rendimiento.
-                </p>
+            <div
+                class="relative z-20 w-full max-w-max-width px-margin-mobile md:px-margin-desktop grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2
+                        class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
+                        Análisis Visual de <span class="text-secondary">Datos</span>
+                    </h2>
+                    <p class="font-body-lg text-on-surface-variant max-w-lg">
+                        Explora nuestras visualizaciones interactivas de aviación con precisión de ingeniería y
+                        telemetría en tiempo real.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <button
+                            class="bg-secondary text-on-secondary px-8 py-3 rounded-lg font-headline-md text-body-md cyan-glow hover:brightness-110 transition-all active:scale-95"
+                            onclick="document.getElementById('charts-section').scrollIntoView({behavior: 'smooth'})">
+                            Launch Console
+                        </button>
+                        <button
+                            class="border border-secondary/50 text-secondary bg-white/5 backdrop-blur-sm px-8 py-3 rounded-lg font-headline-md text-body-md hover:bg-secondary/10 transition-all">
+                            Documentation
+                        </button>
+                    </div>
+                </div>
+                <!-- 3D Plane Scene extracted to airplane.js -->
+                <div class="relative h-[400px] md:h-[600px] flex items-center justify-center">
+                    <div class="w-full h-full" style="display:block;">
+                        <div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+                        <script src="airplane.js"></script>
+                    </div>
+                    <!-- Decorative HUD elements -->
+                    <div
+                        class="absolute inset-0 pointer-events-none border border-secondary/10 rounded-full animate-[spin_20s_linear_infinite]">
+                    </div>
+                    <div
+                        class="absolute inset-20 pointer-events-none border border-secondary/5 rounded-full animate-[spin_30s_linear_infinite_reverse]">
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Gráfico 3 (Abajo, completando) -->
-            <div class="chart-wrapper full-width">
-                <h2 class="chart-title">Bump Chart</h2>
-                <div id="vis3" class="vis-container"></div>
-                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">
-                    Este Bump Chart permite hacer un seguimiento de la evolución de las clasificaciones a lo largo de un período, resaltando qué elementos mejoran o empeoran su posición.
-                </p>
+        <!-- Charts Grid Section -->
+        <section id="charts-section" class="py-24 px-margin-mobile md:px-margin-desktop bg-surface-container-lowest">
+            <div class="max-w-max-width mx-auto">
+                <div class="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <h3 class="font-label-caps text-label-caps text-secondary uppercase tracking-[0.2em] mb-2">
+                            Operational Metrics</h3>
+                        <h4 class="font-headline-md text-headline-md text-on-surface">Data Visualization Cluster</h4>
+                    </div>
+                    <div class="flex gap-2">
+                        <div
+                            class="bg-surface-container-high p-2 rounded border border-white/5 font-mono-data text-[10px] text-on-surface-variant">
+                            UTC: 14:22:09
+                        </div>
+                        <div
+                            class="bg-surface-container-high p-2 rounded border border-white/5 font-mono-data text-[10px] text-secondary">
+                            LAT: 40.7128° N
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                    <!-- Heatmap Card -->
+                    <div
+                        class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col">
+                        <div class="status-line"></div>
+                        <div class="flex justify-between items-start mb-6 w-full">
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Heatmap Alpha</span>
+                            <span class="material-symbols-outlined text-on-surface-variant text-sm">sensors</span>
+                        </div>
+                        <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
+                            id="vis1">
+                            <span class="text-gray-400 font-mono-data animate-pulse">Initializing
+                                visualization...</span>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Concentración de vuelos</h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Distribución de tráfico
+                                según horario operacional.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bar Chart Card -->
+                    <div
+                        class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col">
+                        <div class="status-line"></div>
+                        <div class="flex justify-between items-start mb-6 w-full">
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Metrics Delta</span>
+                            <span class="material-symbols-outlined text-on-surface-variant text-sm">bar_chart</span>
+                        </div>
+                        <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
+                            id="vis2">
+                            <span class="text-gray-400 font-mono-data animate-pulse">Processing metadata...</span>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Porcentajes de Retraso</h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Comparativa técnica de
+                                performance por transportista.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bump Chart Card -->
+                    <div
+                        class="glass-card p-6 relative overflow-hidden group hover:bg-white/5 transition-all duration-500 flex flex-col md:col-span-2">
+                        <div class="status-line"></div>
+                        <div class="flex justify-between items-start mb-6 w-full">
+                            <span class="font-label-caps text-label-caps text-secondary uppercase">Evo-Flow Gamma</span>
+                            <span class="material-symbols-outlined text-on-surface-variant text-sm">timeline</span>
+                        </div>
+                        <div class="w-full min-h-[350px] bg-white rounded-lg shadow-sm border border-gray-200 chart-container-scroll flex items-center justify-center p-2"
+                            id="vis3">
+                            <span class="text-gray-400 font-mono-data animate-pulse">Syncing chronological
+                                data...</span>
+                        </div>
+                        <div class="mt-6">
+                            <h5 class="font-headline-md text-body-md text-on-surface mb-1">Evolución de Clasificaciones
+                            </h5>
+                            <p class="font-body-md text-on-surface-variant text-sm opacity-80">Seguimiento dinámico de
+                                rankings en el período.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </section>
 
-            <!-- Dashboard Final (Dentro del grid para mantener mismo tamaño) -->
-            <div class="chart-wrapper full-width" style="align-items: center; text-align: center;">
-                <h2 class="chart-title" style="width: 100%; border-bottom: none;">Dashboard</h2>
-                <div id="vis4" class="vis-container"></div>
-                <p class="chart-description" style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem; max-width: 800px; text-align: center;">
-                    Este Dashboard integrador proporciona una vista general combinando múltiples métricas. Interactúa con los elementos del gráfico para explorar los datos a mayor profundidad.
-                </p>
+        <!-- Final Dashboard Section -->
+        <section id="dashboard-final"
+            class="py-24 px-margin-mobile md:px-margin-desktop bg-surface relative overflow-hidden">
+            <div
+                class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-secondary/30 to-transparent">
             </div>
-
-        </div>
-
+            <div class="max-w-max-width mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Dashboard Final</h2>
+                    <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                        Interface de control unificada con filtrado bidireccional y telemetría persistente. Interactúa
+                        con los elementos para aislar variables específicas.
+                    </p>
+                </div>
+                <div
+                    class="glass-card-raised p-2 md:p-8 rounded-xl overflow-hidden min-h-[600px] border border-secondary/20 relative">
+                    <div class="w-full h-full flex items-center justify-center min-h-[500px] chart-container-scroll bg-white rounded-lg shadow-sm border border-gray-200 p-2"
+                        id="vis4">
+                        <div class="text-center">
+                            <div
+                                class="w-16 h-16 border-4 border-gray-200 border-t-secondary rounded-full animate-spin mx-auto mb-4">
+                            </div>
+                            <p class="font-mono-data text-gray-500">AWAITING SYSTEM INTEGRATION...</p>
+                        </div>
+                    </div>
+                    <!-- HUD Overlays -->
+                    <div class="absolute top-4 left-4 pointer-events-none">
+                        <div
+                            class="font-mono-data text-[10px] text-secondary/40 border-l border-t border-secondary/20 p-2">
+                            SCAN_MODE: ACTIVE<br />REFRESH_RATE: 120HZ
+                        </div>
+                    </div>
+                    <div class="absolute bottom-4 right-4 pointer-events-none">
+                        <div
+                            class="font-mono-data text-[10px] text-secondary/40 border-r border-b border-secondary/20 p-2 text-right">
+                            SECURE_LINK: ENCRYPTED<br />VER: 4.2.0-STABLE
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script>
-        // Configuración para Vega-Lite
-        const vegaOptions = {
-            actions: true
-        };
+    <!-- Footer -->
+    <footer class="w-full py-12 bg-surface border-t border-white/5 px-margin-mobile md:px-margin-desktop">
+        <div class="max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-col gap-2">
+                <h3 class="font-headline-md text-headline-md text-primary tracking-tighter">AVIA_TECH</h3>
+                <p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">© 2024
+                    AEROSPACE DYNAMICS. ALL SYSTEMS OPERATIONAL.</p>
+            </div>
+            <div class="flex gap-12">
+                <div class="flex flex-col gap-4">
+                    <span
+                        class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Protocol</span>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-on-surface-variant hover:text-secondary transition-opacity font-label-caps text-label-caps uppercase tracking-widest"
+                            href="#">Telemetry</a>
+                        <a class="text-on-surface-variant hover:text-secondary transition-opacity font-label-caps text-label-caps uppercase tracking-widest"
+                            href="#">Contact</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Social</span>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-on-surface-variant hover:text-secondary transition-opacity font-label-caps text-label-caps uppercase tracking-widest"
+                            href="#">Terminal</a>
+                        <a class="text-on-surface-variant hover:text-secondary transition-opacity font-label-caps text-label-caps uppercase tracking-widest"
+                            href="#">Broadcast</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        // 1. Cargar Gráfico Superior Izquierdo (usando la variable en heatmap.js)
-        vegaEmbed('#vis1', heatmap_spec, vegaOptions).catch(console.error);
-
-        // 2. Cargar Gráfico Superior Derecho (usando la variable en barras.js)
-        vegaEmbed('#vis2', barras_spec, vegaOptions).catch(console.error);
-
-        // 3. Cargar Gráfico 3 (Abajo, completando) (usando la variable en bump_chart.js)
-        vegaEmbed('#vis3', bump_chart_spec, vegaOptions).catch(console.error);
-
-        // 4. Cargar Dashboard Final (Separado) y guardar su vista para el filtro
-        let dashboardView;
-
-        // Usando el archivo JSON directamente para el dashboard
-        vegaEmbed('#vis4', 'dashboard.json', vegaOptions).then(result => {
-            dashboardView = result.view;
-        }).catch(console.error);
-
-
-        // 5. Lógica del Select (Únicamente afecta al dashboard final)
-
-        const selectElement = document.getElementById('select-final');
-
-        selectElement.addEventListener('change', function (event) {
-            const selectedValue = event.target.value;
-            console.log("Aplicando filtro al dashboard final:", selectedValue);
-
-            if (dashboardView) {
-                // EJEMPLO: Si tu JSON de vega-lite tiene un "param" o "signal" llamado 'filtro_categoria'
-                // puedes actualizarlo de la siguiente manera:
-
-                /*
-                dashboardView.signal('filtro_categoria', selectedValue === 'all' ? null : selectedValue)
-                             .runAsync();
-                */
-
-                // Nota: Asegúrate de configurar el "signal" / "param" dentro de tu 'dashboard_final.json'
-                // para que reaccione a este cambio.
-            }
-        });
-    </script>
-
+    <!-- App Logic -->
+    <script src="main.js"></script>
 </body>
 
 </html>
